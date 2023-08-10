@@ -5,6 +5,5 @@ export const Reply = ({ userImagePath, username, replyText, likeNum }) => {
   <span>{username}</span>
   <span>{replyText}</span>
   <span>{likeNum}</span>
-  
   </div>;
 };
