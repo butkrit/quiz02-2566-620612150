@@ -1,3 +1,3 @@
-export const PostOwner = ({}) => {
-  return <div>Your code here...</div>;
+export const PostOwner = (props) => {
+  return <div>{props.name} {props.stdId} {props.text}</div>;
 };

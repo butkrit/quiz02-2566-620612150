@@ -1,6 +1,13 @@
 "use client";
 
+import { PostOwner } from "@/components/PostOwner";
+import { comments } from "@/libs/comments";
+import { useState } from "react";
+
 export default function HomePage() {
+  
+  const [Comments, setComments] = useState([]);
+
   return (
     <div
       style={{ minHeight: "100vh", backgroundColor: "#18191A" }}
@@ -15,19 +22,19 @@ export default function HomePage() {
         <div className="vstack gap-3">
           <div className="d-flex align-items-center gap-3">
             <img
-              src="/profileImages/handsome.jpg"
+              src="/profileImages/me.jpg"
               width="48"
               height="48"
               className="rounded-circle"
               style={{ objectFit: "cover" }}
             />
             <span className="fw-semibold fs-5 text-white">
-              Chayanin Suatap 650610560
+              <PostOwner name="Thanakrit Yokart" stdId="620612150" />
             </span>
           </div>
 
           <span className="text-white">
-            Quiz ง่ายจังเลยครับ ขอยาก ๆ กว่านี้ได้ไหม #261207
+            <PostOwner text="Quiz ง่ายจังเลยครับ ขอยาก ๆ กว่านี้ได้ไหม #261207"/>
           </span>
 
           <div className="d-flex align-items-center gap-1">
@@ -39,13 +46,13 @@ export default function HomePage() {
 
         {/* Comment Example */}
         <div className="d-flex gap-2 my-2">
-          <img
+          < img
             src="/profileImages/lisa.jpg"
             width="48"
             height="48"
             className="rounded-circle"
             style={{ objectFit: "cover" }}
-          />
+          ></img>
           <div
             className="rounded rounded-3 p-2"
             style={{ backgroundColor: "#3A3B3C" }}
@@ -61,7 +68,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
+      
         {/* Reply Example */}
         <div className="d-flex gap-2 my-2 ps-5">
           <img
@@ -76,7 +83,7 @@ export default function HomePage() {
             style={{ backgroundColor: "#3A3B3C" }}
           >
             <span className="fw-semibold" style={{ color: "#E4E6EB" }}>
-              หมาน้อย
+               หมาน้อย
             </span>
             <br />
             <span style={{ color: "#E4E6EB" }}>จริงค้าบบบบบบบบ</span>
@@ -88,6 +95,16 @@ export default function HomePage() {
         </div>
 
         {/* map-loop render Comment component here */}
+        {Comments.map((comments)=>(
+          < comments 
+            username =  {comments.username}
+            userImagePath = {comments.userImagePath}
+            commentText = {comments.commentText}
+            likeNum = {comments.likeNum}
+            replies = {comments.replies}
+            key = {comments.username}
+          />
+        ))}
       </div>
     </div>
   );
